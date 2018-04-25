@@ -8,10 +8,13 @@ class App extends Component {
       
   
       <Page>
-        <Header/>
-        <Content />
-        <Footer />
+        <div className="Page__content">
+          <Header/>
+          <Content />
+        </div>
         
+     
+      <Footer />
       </Page>
       
     );
