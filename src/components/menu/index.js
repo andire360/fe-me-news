@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.css';
 
 /*
 
@@ -9,9 +10,9 @@ links:
 */
 
 export const Menu = ( {links} ) => (
-    <ul>
+    <ul className="unstyle menu">
         {links.map(item => (
-            <li>
+            <li className="unstyle menu__item">
             <a key={item.url} href={item.url} > {item.text} </a>
             </li>
         ))}
