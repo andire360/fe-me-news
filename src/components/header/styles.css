@@ -1,0 +1,18 @@
+.header {
+    background: peachpuff;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+.header__logo{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.header__menu{
+    display: inline;
+    padding: 15px;
+    margin-left: 20px;
+
+}
