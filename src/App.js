@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Page, Header, Footer, Content, NewsItem } from './components';
-import { BrowserRouter } from 'react-router-dom';
+import { Page, Header, Footer, Content, NewsItem, NewsItemList, PageNewsList } from './components';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { api } from './utils';
 
 
 class App extends Component {
@@ -13,8 +14,10 @@ class App extends Component {
             <div className="Page__content">
               <Header />
                 <Content>
-                    <NewsItem id= {16978544} />
-
+                  <Switch>
+                    <Route  exact path="/" component={PageNewsList} />
+                    <Route path="/item/:itemId" render={({match}) => <NewsItem id={match.params.itemId} />} /> 
+                  </Switch>
                 </Content>   
             </div>
             <Footer />
@@ -24,5 +27,6 @@ class App extends Component {
     );
   }
 }
+// <NewsItem id= {16978544} />
 
 export default App;

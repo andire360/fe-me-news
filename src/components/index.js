@@ -3,4 +3,6 @@ export * from './header';
 export * from './content';
 export * from './footer';
 export * from './menu';
-export * from './newsitem';
+export * from './news-item';
+export * from './news-item-list';
+export * from './page-news-list';
