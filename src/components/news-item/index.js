@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { Component} from 'react';
 import { api } from '../../utils';
 import { Link } from 'react-router-dom';
 
 
 
+export class NewsItem extends Component {
+  constructor(props) {
+    super(props);
 
-export const NewsItem = ({ id }) => {
-    const item = api.getItem(id);
+    this.state = {
+      item: undefined,
+    }
+  }
+  componentDidMount() {
+    api.getItem(this.props.id)
+      .then(item => { this.setState({ item }) })
+      .catch(err => { console.error(err) });
+  }
+
+  render() {
+    const { item } = this.state;
+    if (!item) {
+      return <div>Loading…</div>
+    }
     return (
       <div>
         <a href={item.url}>
@@ -26,4 +42,6 @@ export const NewsItem = ({ id }) => {
       </div>
     )
   }
+}
+
 
