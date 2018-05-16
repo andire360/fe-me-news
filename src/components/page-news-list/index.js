@@ -15,7 +15,7 @@ export class PageNewsList extends Component {
     }
   }
   componentDidMount() {
-    api.getItemsIds()
+    api.getItemsIds(this.props.id)
       .then(data => { this.setState({ data }) })
       .catch(err => { console.error(err) });
   }
