@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 export const NewsItem = ({ id }) => {
-    const item = api.getItem(id);
+    const item = api.getItem(id) || {};
     return (
       <div>
         <a href={item.url}>
