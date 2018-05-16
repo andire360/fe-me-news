@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 
 
 
-
-const isArraysEqual = (arr1, arr2) => arr1.toString() === arr2.toString();
-
 export class NewsItem extends Component {
   constructor(props) {
     super(props);
@@ -20,10 +17,7 @@ export class NewsItem extends Component {
       .then(item => { this.setState({ item }) })
       .catch(err => { console.error(err) });
   }
-  shouldComponetUpdate(nextProps, nextState) {
-    // TODO: access current this.state and this.props
-    // use isArraysEqual to check list of ids for `/`
-  }
+
   render() {
     const { item } = this.state;
     if (!item) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Page, Header, Footer, Content, NewsItem, NewsItemList, PageNewsList } from './components';
+import { Page, Header, Footer, Content, NewsItem, PageNewsList } from './components';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { api } from './utils';
+
 
 
 class App extends Component {
@@ -19,6 +19,7 @@ class App extends Component {
                     <Route path="/item/:itemId" render={
                       ({match}) => <NewsItem id={match.params.itemId} />
                       } /> 
+    
                   </Switch>
                 </Content>   
             </div>
@@ -29,6 +30,5 @@ class App extends Component {
     );
   }
 }
-// <NewsItem id= {16978544} />
 
 export default App;
