@@ -21,7 +21,7 @@ export const Header = (props) => (
             <Menu links={mainMenu} />
         </div>
         <button onClick={e => { props.toggleTheme()}}>
-            togglebutton
+            Toggle theme
         </button>
     </div>
 )
