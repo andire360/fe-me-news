@@ -1,40 +1,44 @@
 import React, { Component } from 'react';
 import { NewsItemList} from '../';
 import { api } from '../../utils';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 const isArraysEqual = (arr1=[], arr2=[]) => arr1.toString() === arr2.toString();
 
 export class PageNewsList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data: undefined,
-    }
-    this.fetchItems = () => {
-        api.get20ItemsIds()
-        .then(data => { this.setState({ data }) })
-        .catch(err => { console.error(err) });
-    }
-  }
+  
   componentDidMount() {
-    this.fetchItems();
+    this.props.fetchItemsIds();
   }
   
   shouldComponentUpdate(nextProps, nextState) {
-    return !isArraysEqual(nextState.data, this.state.data)
+    return !isArraysEqual(this.props.ids, nextProps.ids)
   }
 
   render() {
-    const { data } = this.state;
-    if (!data) {
+    const { ids } = this.props;
+    if (!ids) {
       return <div>Loading…</div>
     }
     return (
       <div>
-        <NewsItemList ids={data} />
-        <button onClick={this.fetchItems}>Refresh</button>
+        <NewsItemList ids={ids} />
+        <button onClick={this.props.fetchItemsIds}>Refresh</button>
       </div>
     )
   }
 }
+const firstN = (n, arr) => arr.slice(0, n)
+
+export const mapDispatchToProps = {
+  fetchItemsIds: actions.fetchItemsIds,
+}
+
+export const mapStateToProps = state => {
+  return {
+    ids: firstN(state.ui.itemsToShow, state.data.itemsIds.ids)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageNewsList);
