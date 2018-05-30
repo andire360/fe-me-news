@@ -2,8 +2,6 @@ import React, { Component} from 'react';
 import { api } from '../../utils';
 import { Link } from 'react-router-dom';
 
-
-
 export class NewsItem extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +10,7 @@ export class NewsItem extends Component {
       item: undefined,
     }
   }
+
   componentDidMount() {
     api.getItem(this.props.id)
       .then(item => { this.setState({ item }) })

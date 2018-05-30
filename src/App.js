@@ -3,7 +3,6 @@ import { Page, Header, Footer, Content, NewsItem, PageNewsList } from './compone
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 
-
 class App extends Component {
 
 
