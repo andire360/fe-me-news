@@ -12,7 +12,7 @@ export class PageNewsList extends Component {
       data: undefined,
     }
     this.fetchItems = () => {
-        api.getItemsIds()
+        api.get20ItemsIds()
         .then(data => { this.setState({ data }) })
         .catch(err => { console.error(err) });
     }
