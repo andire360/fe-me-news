@@ -6,13 +6,7 @@ import * as actions from '../../actions';
 
 export class NewsItem extends Component {
 
-
-  componentDidMount() {
-
-   /* api.getItem(this.props.id)
-      .then(item => { this.setState({ item }) })
-      .catch(err => { console.error(err) });*/
-
+  componentDidMount() { 
     this.props.fetchItem(this.props.id)  
   }
 
@@ -42,23 +36,11 @@ export class NewsItem extends Component {
   }
 }
 
-
-
-const mapStateToProps = (state, ownProps) => {
-  
-  /*
-  const items = state.data.items;
-  const id = ownProps.id;
-  const item = items[id];
-  return item;
-*/
-
+const mapStateToProps = (state, ownProps) => { 
   return {
     item: (state.data.items[ownProps.id] || {}).item
   }
-
 }
-
 
 export const mapDispatchToProps = {
   fetchItem: actions.fetchItem,
