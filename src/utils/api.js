@@ -7,7 +7,7 @@
 // `type`—The type of item. One of "job", "story", "comment", "poll", or "pollopt".
 // `url`—The URL of the story.
 
-
+/*
 // helpers
 const fetchJson = url => fetch(url).then(res => res.json());
 const first10 = arr => arr.slice(0, 10);
@@ -29,3 +29,12 @@ export const api = {
   get20ItemsIds,
   getItem,
 }
+*/
+
+const BASE_URL = 'https://hacker-news.firebaseio.com';
+const fetchJson = url => fetch(url).then(res => res.json());
+
+export const api = {
+  getItem: id => fetchJson(`${BASE_URL}/v0/item/${id}.json`),
+  getItemsIds: () => fetchJson(`${BASE_URL}/v0/topstories.json`),
+};
