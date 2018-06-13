@@ -14,7 +14,7 @@ export const Page = ({ children, isDarkTheme }) => {
 
 const mapStateToProps = state => {
     return {
-        isDarkTheme: ducks.ui.selectors.isDarkTheme,
+        isDarkTheme: ducks.ui.selectors.isDarkTheme(state)
     }  
 }
 

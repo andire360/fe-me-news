@@ -1,3 +1,4 @@
+/*
 // src/actions/index.js
 import { api } from '../utils';
 
@@ -68,4 +69,4 @@ export const fetchItem = id => {
         });
     }
   };
-
+*/

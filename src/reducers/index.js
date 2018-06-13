@@ -1,4 +1,4 @@
-// src/reducers/index.js
+/*// src/reducers/index.js
 import { combineReducers } from 'redux';
 
 // HELPERS
@@ -90,3 +90,4 @@ export const rootReducer = combineReducers({
   
 });
 
+*/

@@ -6,7 +6,6 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { dataReducer } from './reducers';
 import * as ducks from './ducks';
 import { combineReducers } from 'redux';
 

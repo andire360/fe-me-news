@@ -20,14 +20,14 @@ export const Header = (props) => (
         <div className="header__menu">
             <Menu links={mainMenu} />
         </div>
-        <button onClick={e => { props.toggleTheme}}>
+        <button onClick={e => { props.toggleTheme()}}>
             Toggle theme
         </button>
     </div>
 )
 
 const mapDispatchToProps = {
-    toggleTheme: ducks.ui.toggleTheme,
+    toggleTheme: ducks.ui.actions.toggleTheme,
 }
 
 export default connect(null,mapDispatchToProps)(Header);

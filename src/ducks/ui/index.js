@@ -43,8 +43,8 @@ const rawReducer = (state = defaultState, action) => {
     switch (action.type) {
         case types.updateItemsToShow:
             return { ...state, itemsToShow: action.payload };
-        case types.toggleTheme:
-            return { ...state, isDarkTheme: action.payload };
+        case types.toggleTheme: 
+            return { ...state, isDarkTheme: !state.isDarkTheme };
       default:
         return state;
     }
