@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
     ...ducks.data.reducer, // { example: example.rawReducer }
 }); // combineReducers({ ui: ui.rawReducer, example: example.rawReducer })
   
-
+/*
 const store = createStore(
     rootReducer, 
     compose(
@@ -23,6 +23,18 @@ const store = createStore(
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
       )
   );
+  */
+
+// Stolen from https://github.com/zalmoxisus/redux-devtools-extension#usage
+const composeEnhancers =
+  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+    : compose;
+const enhancer = composeEnhancers(
+  applyMiddleware(thunk)
+  // other store enhancers if any
+);
+const store = createStore(rootReducer, enhancer);
 
 
 ReactDOM.render(
