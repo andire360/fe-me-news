@@ -6,9 +6,17 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { rootReducer } from './reducers';
+import { dataReducer } from './reducers';
+import * as ducks from './ducks';
+import { combineReducers } from 'redux';
 
-//const store = createStore(rootReducer);
+
+const rootReducer = combineReducers({
+    ...ducks.ui.Reducer, // { ui: ui.rawReducer }
+    data: dataReducer, // { example: example.rawReducer }
+}); // combineReducers({ ui: ui.rawReducer, example: example.rawReducer })
+  
+
 const store = createStore(
     rootReducer, 
     compose(
@@ -16,6 +24,7 @@ const store = createStore(
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
       )
   );
+
 
 ReactDOM.render(
     <Provider store={store}>

@@ -2,8 +2,8 @@ import React from 'react';
 import { Menu } from '../';
 import { Link } from 'react-router-dom';
 import './styles.css';
-import * as actions from '../../actions';
 import { connect } from 'react-redux';
+import * as ducks from '../../ducks';
 
 const mainMenu = [
     { text: 'New', url: 'https://news.ycombinator.com/newest' },
@@ -20,14 +20,14 @@ export const Header = (props) => (
         <div className="header__menu">
             <Menu links={mainMenu} />
         </div>
-        <button onClick={e => { props.toggleTheme()}}>
+        <button onClick={e => { props.toggleTheme}}>
             Toggle theme
         </button>
     </div>
 )
 
 const mapDispatchToProps = {
-    toggleTheme: actions.toggleTheme,
+    toggleTheme: ducks.ui.toggleTheme,
 }
 
 export default connect(null,mapDispatchToProps)(Header);

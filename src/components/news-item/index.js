@@ -1,8 +1,8 @@
 import React, { Component} from 'react';
-import { api } from '../../utils';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+
 
 export class NewsItem extends Component {
 
