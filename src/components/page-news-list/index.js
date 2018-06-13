@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { NewsItemList} from '../';
-import { api } from '../../utils';
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import * as ducks from '../../ducks';
 
 const isArraysEqual = (arr1=[], arr2=[]) => arr1.toString() === arr2.toString();
 
@@ -33,17 +32,19 @@ export class PageNewsList extends Component {
 }
 
 const firstN = (n, arr) => arr.slice(0, n);
-const itemsToShow = 5;;
+
 
 export const mapDispatchToProps = {
-  fetchItemsIds: actions.fetchItemsIds,
-  updateItemsToShow: actions.updateItemsToShow
+  fetchItemsIds: ducks.data.itemsIds.actions.fetchItemsIds,
+  updateItemsToShow: ducks.ui.actions.updateItemsToShow
 }
 
 export const mapStateToProps = state => {
   return {
-    ids: firstN(state.ui.itemsToShow, state.data.itemsIds.ids),
-    itemsToShow: state.ui.itemsToShow,
+    ids: firstN(
+      ducks.ui.selectors.itemsToShow(state),
+      ducks.data.itemsIds.selectors.ids(state),
+    ) 
   };
 };
 
