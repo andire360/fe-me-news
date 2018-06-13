@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import * as ducks from '../../ducks';
 
 
 export class NewsItem extends Component {
@@ -38,12 +39,12 @@ export class NewsItem extends Component {
 
 const mapStateToProps = (state, ownProps) => { 
   return {
-    item: (state.data.items[ownProps.id] || {}).item
-  }
-}
+    item: ducks.data.items.selectors.item(state, ownProps.id),
+  };
+};
 
 export const mapDispatchToProps = {
-  fetchItem: actions.fetchItem,
+  fetchItem: ducks.data.items.actions.fetchItem
 }
 
 export default connect(mapStateToProps, mapDispatchToProps) (NewsItem);

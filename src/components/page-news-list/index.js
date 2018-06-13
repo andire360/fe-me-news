@@ -36,14 +36,16 @@ const firstN = (n, arr) => arr.slice(0, n);
 
 
 export const mapDispatchToProps = {
-  fetchItemsIds: actions.fetchItemsIds,
-  updateItemsToShow: actions.updateItemsToShow
+  fetchItemsIds: ducks.data.itemsIds.actions.fetchItemsIds,
+  updateItemsToShow: ducks.ui.actions.updateItemsToShow
 }
 
 export const mapStateToProps = state => {
   return {
-    ids: firstN(ducks.ui.selectors.itemsToShow, state.data.itemsIds.ids),
-    itemsToShow: ducks.ui.selectors.itemsToShow,
+    ids: firstN(
+      ducks.ui.selectors.itemsToShow(state),
+      ducks.data.itemsIds.selectors.ids(state),
+    ) 
   };
 };
 
