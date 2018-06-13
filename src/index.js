@@ -14,7 +14,6 @@ import { combineReducers } from 'redux';
 const rootReducer = combineReducers({
     ...ducks.ui.reducer, // { ui: ui.rawReducer }
     ...ducks.data.reducer, // { example: example.rawReducer }
-    data: dataReducer
 }); // combineReducers({ ui: ui.rawReducer, example: example.rawReducer })
   
 

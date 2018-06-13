@@ -87,6 +87,6 @@ export const dataReducer = combineReducers({
 // ROOT
 export const rootReducer = combineReducers({
   ui: uiReducer,
-  data: dataReducer,
+  
 });
 
