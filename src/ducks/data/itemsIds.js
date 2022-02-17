@@ -1,4 +1,4 @@
-import { api } from "../../utils";
+
 
 const ns = "itemsIds";
 
@@ -20,41 +20,16 @@ const selectors = {
 };
 
 const types = {
-  start: "REQUEST_ITEMS_IDS_START",
-  success: "REQUEST_ITEMS_IDS_SUCCESS",
-  fail: "REQUEST_ITEMS_IDS_FAIL"
+  fetchItemsIds: "REQUEST_ITEMS_IDS",
 };
 
-const requestItemsIdsStart = () => ({
-  type: types.start
-});
-const requestItemsIdsSuccess = itemIds => ({
-  type: types.success,
-  payload: itemIds
-});
-const requestItemsIdsFail = err => ({
-  type: types.fail,
-  payload: err
-});
-
-const fetchItemsIds = () => {
-  return dispatch => {
-    dispatch(requestItemsIdsStart());
-    return api
-      .getItemsIds()
-      .then(itemsIds => {
-        dispatch(requestItemsIdsSuccess(itemsIds));
-      })
-      .catch(err => {
-        dispatch(requestItemsIdsFail(err));
-      });
-  };
-};
+const fetchItemsIds = () => ({
+  type: types.fetchItemsIds,
+  fetch: { url: `/v0/topstories.json` },
+  params: {}
+})
 
 const actions = {
-  requestItemsIdsStart,
-  requestItemsIdsSuccess,
-  requestItemsIdsFail,
   fetchItemsIds
 };
 
@@ -62,15 +37,15 @@ const stringifyErr = err => err.toString();
 
 const rawReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case types.start:
+    case `${types.fetchItemsIds} / start`:
       return { ...state, isLoading: true };
-    case types.success:
+    case `${types.fetchItemsIds} / success`:
       return { ids: action.payload, isLoading: false, error: null };
-    case types.fail:
+    case `${types.fetchItemsIds} / fail`:
       return {
         ids: {},
         isLoading: false,
-        error: stringifyErr(action.payload)
+        error: action.payload
       };
     default:
       return state;

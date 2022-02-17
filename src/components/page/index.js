@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as ducks from '../../ducks'
 
@@ -18,4 +19,4 @@ const mapStateToProps = state => {
     }  
 }
 
-export default connect(mapStateToProps, null)(Page);
+export default withRouter(connect(mapStateToProps, null)(Page));
